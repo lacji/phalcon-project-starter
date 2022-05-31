@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  fpm:
+    build: ./docker/fpm
+    volumes:
+      - ./:/var/www/html
+
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - 80:80
+
+  database:
+    build: ./docker/postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+#  database:
+#    build: ./docker/mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}

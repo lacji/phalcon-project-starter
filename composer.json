@@ -1,0 +1,19 @@
+{
+    "name": "lacji/phalcon-starter",
+    "version": "0.0.0",
+    "type": "library",
+    "description": "Simple starter project for PHP Phalcon",
+    "keywords": ["phalcon", "docker"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jerome Auffret",
+            "email": "jerome.auffret.ja@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "~8.0",
+        "ext-psr": "1.1.0",
+        "ext-phalcon": "5.0.0-beta.3"
+    }
+}
