@@ -2,17 +2,25 @@ version: '3'
 
 services:
   fpm:
-    build: ./docker/fpm
+    build:
+      context: ./docker/fpm
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        PSR_VERSION: ${PSR_VERSION}
+        PHALCON_VERSION: ${PHALCON_VERSION}
+    restart: always
     volumes:
       - ./:/var/www/html
 
   nginx:
     build: ./docker/nginx
+    restart: always
     ports:
       - 80:80
 
   database:
     build: ./docker/postgres
+    restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
