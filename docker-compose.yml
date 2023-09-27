@@ -3,7 +3,7 @@ version: '3'
 services:
   fpm:
     build:
-      context: ./docker/fpm
+      context: ./docker/fpm/
       args:
         PHP_VERSION: ${PHP_VERSION}
         PSR_VERSION: ${PSR_VERSION}
@@ -30,3 +30,10 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  composer:
+    restart: 'no'
+    image: composer/composer
+    command: install --working-dir=/var/www/html --ignore-platform-reqs
+    volumes_from:
+      - fpm

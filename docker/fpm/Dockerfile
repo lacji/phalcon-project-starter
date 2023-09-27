@@ -23,13 +23,5 @@ RUN cd /tmp \
 # Import fpm config file
 COPY www.conf /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
 
-# Import composer
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-
-# Import setup script
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# Setup script / Start fpm service
-CMD ["/usr/local/bin/entrypoint.sh"]
+# Start fpm service
 CMD ["php-fpm","-F"]
