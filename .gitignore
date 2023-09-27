@@ -9,5 +9,5 @@
 .DS_Store
 
 ### Composer ###
-vendor/
-composer.lock
+**/vendor/
+**/composer.lock
